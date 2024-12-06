@@ -5,8 +5,8 @@ import "../scss/style.scss"; // Global styles
 // Store initialization with wrapper
 // const { store, persistor } = createStore();
 
-const Home = () => {
-  return <div>Hello </div>;
+const Home = ({ children }) => {
+  return <div>{children} </div>;
 };
 
 export default Home;
