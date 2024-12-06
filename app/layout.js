@@ -1,11 +1,20 @@
+import { Provider } from "react-redux";
+import dynamic from "next/dynamic";
+import PersistGateWrapper from "@/component/PersistGateWrapper";
+// import { store, persistor } from "../store/store";
+// import { useStore } from "react-redux";
 import localFont from "next/font/local";
-import "./globals.css";
+import DefaultLayout from "@/component/layout/DefaultLayout";
+import "../scss/style.scss";
+// import { usePathname } from "next/navigation";
+// Assuming this creates the store with persist
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
   weight: "100 900",
 });
+
 const geistMono = localFont({
   src: "./fonts/GeistMonoVF.woff",
   variable: "--font-geist-mono",
@@ -20,10 +29,53 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <head>
+        <title>Ecomerce</title>
+        <link rel="shortcut icon" href="/static/img/favi.png" />
+        <link rel="icon" href="/static/img/favi.png" sizes="32x32" />
+        <link rel="icon" href="/static/img/favi.png" sizes="192x192" />
+        <link rel="apple-touch-icon-precomposed" href="/static/img/favi.png" />
+        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="author" content="nouthemes" />
+        <meta name="keywords" content="Martfury, React, eCommerce, Template" />
+        <meta
+          name="description"
+          content="Martfury - React eCommerce Template"
+        />
+        <link
+          href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,500,600,700&subset=latin-ext"
+          rel="stylesheet"
+        />
+        <link
+          rel="stylesheet"
+          href="/static/fonts/Linearicons/Font/demo-files/demo.css"
+        />
+        <link
+          rel="stylesheet"
+          href="/static/fonts/font-awesome/css/font-awesome.min.css"
+        />
+        <link
+          rel="stylesheet"
+          type="text/css"
+          href="/static/css/bootstrap.min.css"
+        />
+        <link
+          rel="stylesheet"
+          type="text/css"
+          href="/static/css/slick.min.css"
+        />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        {/* <Provider store={store}> */}
+        {/* <PersistGateWrapper persistor={persistor}> */}
+        <DefaultLayout>{children}</DefaultLayout>
+        {/* </PersistGateWrapper> */}
+        {/* </Provider> */}
       </body>
     </html>
   );
